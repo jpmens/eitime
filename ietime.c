@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
+#include <getopt.h>
 
 /*
  * ----------------------------------------------------------------------------
@@ -18,7 +20,24 @@ int main(int argc, char **argv)
 	time_t tics = time(NULL);
 	long days = 30L;
 	struct tm *tm;
+	int c, hour = 0, min = 0, sec = 0;
+	bool zero = false;
+	extern int optind;
+	char *progname = *argv;
 
+	while ((c = getopt(argc, argv, "z")) != EOF) {
+		switch (c) {
+			case 'z':
+				zero = true;
+				break;
+			default:
+				fprintf(stderr, "Usage: %s [-z] [+/- days]\n", progname);
+				return 1;
+		}
+	}
+
+	argc -= optind - 1;
+	argv += optind - 1;
 	if (argc == 2) {
 		days = atol(argv[1]);
 	}
@@ -30,13 +49,18 @@ int main(int argc, char **argv)
 		return -1;
 	}
 
+	if (!zero) {
+		hour = tm->tm_hour;
+		min  = tm->tm_min;
+		sec  = tm->tm_sec;
+	}
 	printf("%04d%02d%02d%02d%02d%02d\n",
 		tm->tm_year + 1900,
 		tm->tm_mon + 1,
 		tm->tm_mday,
-		0, 			// tm->tm_hour
-		0, 			// tm->tm_min
-		0); 			// tm->tm_sec
+		hour,
+		min,
+		sec);
 
 	return 0;
 }
