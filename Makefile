@@ -1,14 +1,14 @@
 
 CFLAGS = -Wall
 
-all: ietime
+all: eitime
 
-ietime: ietime.c
+eitime: eitime.c
 
-install: ietime
-	install -m111 ietime ~/bin/ietime
+install: eitime
+	install -m111 eitime ~/bin/eitime
 
 clean:
 	rm -f *.o
 clobber: clean
-	rm -f ietime
+	rm -f eitime

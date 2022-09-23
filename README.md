@@ -1,9 +1,9 @@
-## ietime
+## eitime
 
 print a UTC RRSIG inception / expiration time in the form `YYYYMMDDHHMMSS` (the time is all zeroes).
 
 ```
-Usage: ietime [-z] [+/- days]
+Usage: eitime [-z] [+/- days]
 ```
 
 ### options
@@ -13,14 +13,18 @@ Usage: ietime [-z] [+/- days]
 with days being a positive integer (negative values permitted but likely not useful) with a default of `30`.
 
 ```console
-% ietime
+% eitime
 20221022180915
 
-% ietime 2
+% eitime 2
 argc==2
 20220924181204
 
-% ietime -z 180
+% eitime -z 180
 argc==2
 20230321000000
 ```
+
+### name
+
+What's with the name? `e`xpiration / `i`nception time. That's the order of the timestamps in an RRSIG. I pronounce it "eye-time". ;)

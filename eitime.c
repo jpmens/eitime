@@ -38,6 +38,7 @@ int main(int argc, char **argv)
 
 	argc -= optind - 1;
 	argv += optind - 1;
+
 	if (argc == 2) {
 		days = atol(argv[1]);
 	}
