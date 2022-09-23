@@ -1,6 +1,6 @@
 ## eitime
 
-print a UTC RRSIG inception / expiration time in the form `YYYYMMDDHHMMSS` (the time is all zeroes).
+print a timestamp in UTC `YYYYMMDDHHMMSS` for RRSIG expiration/inception times. The `HHMMSS` can be zeroes.
 
 ```
 Usage: eitime [-z] [+/- days]
